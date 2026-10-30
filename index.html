@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolicySevak | Multilingual Policy, Rights & Scheme Explainer</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <header class="navbar">
+        <div class="nav-brand">
+            <i class="fa-solid fa-scale-balanced brand-icon"></i>
+            <span>Policy<span class="highlight">Sevak</span></span>
+        </div>
+        <div class="nav-controls">
+            <div class="lang-selector">
+                <i class="fa-solid fa-globe"></i>
+                <select id="globalLanguageSelect" aria-label="Select Language">
+                    <option value="en">English</option>
+                    <option value="hi">हिंदी (Hindi)</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="as">অসমীয়া (Assamese)</option>
+                    <option value="te">తెలుగు (Telugu)</option>
+                    <option value="ta">தமிழ் (Tamil)</option>
+                </select>
+            </div>
+            <button class="btn-primary" id="uploadPolicyBtn"><i class="fa-solid fa-cloud-arrow-up"></i> Ingest Policy</button>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="app-container">
+        <!-- Sidebar Navigation (10 Problem-Solution Pillars) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fa-solid fa-list-check"></i> System Solutions</h3>
+                <span class="badge">10 Core Features</span>
+            </div>
+            <ul class="nav-list" id="sidebarList">
+                <li class="nav-item active" data-tab="tab-simplifier"><i class="fa-solid fa-wand-magic-sparkles"></i> <span>1. AI Simplifier</span></li>
+                <li class="nav-item" data-tab="tab-translator"><i class="fa-solid fa-language"></i> <span>2. Regional Translation</span></li>
+                <li class="nav-item" data-tab="tab-discovery"><i class="fa-solid fa-magnifying-glass-chart"></i> <span>3. Scheme Discovery</span></li>
+                <li class="nav-item" data-tab="tab-eligibility"><i class="fa-solid fa-square-check"></i> <span>4. Eligibility Checker</span></li>
+                <li class="nav-item" data-tab="tab-rights"><i class="fa-solid fa-shield-halved"></i> <span>5. Rights & Duties</span></li>
+                <li class="nav-item" data-tab="tab-voice"><i class="fa-solid fa-volume-high"></i> <span>6. Voice Explainer</span></li>
+                <li class="nav-item" data-tab="tab-guidance"><i class="fa-solid fa-shoe-prints"></i> <span>7. Step-by-Step Guide</span></li>
+                <li class="nav-item" data-tab="tab-verification"><i class="fa-solid fa-certificate"></i> <span>8. Source Verification</span></li>
+                <li class="nav-item" data-tab="tab-chatbot"><i class="fa-solid fa-robot"></i> <span>9. AI Policy Chatbot</span></li>
+                <li class="nav-item" data-tab="tab-tracker"><i class="fa-solid fa-timeline"></i> <span>10. Policy Tracker</span></li>
+            </ul>
+        </aside>
+
+        <!-- Dynamic Content Workspace -->
+        <section class="workspace">
+
+            <!-- TAB 1: AI SIMPLIFIER -->
+            <div class="tab-pane active" id="tab-simplifier">
+                <div class="pane-header">
+                    <h2>Complicated Government Language &rarr; AI Simplification</h2>
+                    <p>Transform dense, jargon-heavy bureaucratic notifications into crystal-clear plain language.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Raw Official Notification (Input)</h3>
+                        <textarea id="rawPolicyInput" rows="6" placeholder="Paste complex municipal notification or welfare policy draft here...">In exercise of the powers conferred by Section 28 sub-section (4) of the Municipal Corporation Act, the competent authority hereby notifies that any commercial establishment falling within territorial jurisdiction Tier-1 seeking renewal of operating license must furnish digital proof of compliance with environmental discharge parameters stipulated under Notification GSR 412(E) failing which penal exactions under Section 44 shall accrue.</textarea>
+                        <button class="btn-action" id="simplifyBtn"><i class="fa-solid fa-wand-magic-sparkles"></i> Simplify Text Instantly</button>
+                    </div>
+                    <div class="card output-card">
+                        <h3>Plain Citizen-Friendly Breakdown</h3>
+                        <div id="simplifiedOutput" class="output-box">
+                            <p class="placeholder-text">Click 'Simplify Text Instantly' to generate an easy-to-understand summary for citizens and small business owners.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: REGIONAL TRANSLATION -->
+            <div class="tab-pane" id="tab-translator">
+                <div class="pane-header">
+                    <h2>Regional Language Barriers &rarr; Multilingual Translation</h2>
+                    <p>Instantly translate summarized policies into local Indian languages for universal accessibility.</p>
+                </div>
+                <div class="card">
+                    <div class="toolbar">
+                        <label>Select Target Language:</label>
+                        <select id="targetLangSelect">
+                            <option value="hi">हिंदी (Hindi)</option>
+                            <option value="bn">বাংলা (Bengali)</option>
+                            <option value="as">অসমীয়া (Assamese)</option>
+                            <option value="te">తెలుగు (Telugu)</option>
+                            <option value="ta">தமிழ் (Tamil)</option>
+                        </select>
+                        <button class="btn-action" id="translateBtn"><i class="fa-solid fa-language"></i> Translate Summary</button>
+                    </div>
+                    <div class="translation-viewport" id="translationOutput">
+                        <p class="placeholder-text">Translated policy details in regional script will appear here...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: SCHEME DISCOVERY -->
+            <div class="tab-pane" id="tab-discovery">
+                <div class="pane-header">
+                    <h2>Lack of Scheme Awareness &rarr; Smart Scheme Discovery</h2>
+                    <p>Discover central and state welfare schemes tailored for farmers, MSMEs, students, and citizens.</p>
+                </div>
+                <div class="search-bar-wrapper">
+                    <input type="text" id="schemeSearchInput" placeholder="Search by sector (e.g., Agriculture, MSME, Women Entrepreneur, Education)...">
+                    <button class="btn-action" id="searchSchemeBtn"><i class="fa-solid fa-magnifying-glass"></i> Find Schemes</button>
+                </div>
+                <div class="schemes-grid" id="schemesContainer">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
+
+            <!-- TAB 4: ELIGIBILITY CHECKER -->
+            <div class="tab-pane" id="tab-eligibility">
+                <div class="pane-header">
+                    <h2>Confusing Eligibility Criteria &rarr; Smart Eligibility Checker</h2>
+                    <p>Input your profile parameters to instantly check if you qualify for government grants or welfare schemes.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Applicant Profile Parameters</h3>
+                        <div class="form-group">
+                            <label>Select Scheme:</label>
+                            <select id="eligibilitySchemeSelect">
+                                <option value="pm_mudra">PM Mudra Micro-Unit Scheme</option>
+                                <option value="pm_kisan">PM Kisan Samman Nidhi</option>
+                                <option value="startup_india">Startup India Seed Fund</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Annual Family / Business Income (₹):</label>
+                            <input type="number" id="applicantIncome" value="350000">
+                        </div>
+                        <div class="form-group">
+                            <label>Category / Profession:</label>
+                            <select id="applicantCategory">
+                                <option value="msme">Small Business Owner / MSME</option>
+                                <option value="farmer">Farmer / Agriculturist</option>
+                                <option value="student">Student / Youth</option>
+                            </select>
+                        </div>
+                        <button class="btn-action" id="checkEligibilityBtn"><i class="fa-solid fa-circle-check"></i> Evaluate Eligibility</button>
+                    </div>
+                    <div class="card output-card">
+                        <h3>Evaluation Report</h3>
+                        <div id="eligibilityResultBox" class="output-box">
+                            <p class="placeholder-text">Enter your parameters and click evaluate to view eligibility status.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: RIGHTS & DUTIES EXPLAINER -->
+            <div class="tab-pane" id="tab-rights">
+                <div class="pane-header">
+                    <h2>Lack of Rights Awareness &rarr; Rights and Duties Explainer</h2>
+                    <p>Understand your legal rights, protections, and civic responsibilities under municipal and national laws.</p>
+                </div>
+                <div class="rights-container" id="rightsContainer">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+            <!-- TAB 6: VOICE EXPLAINER -->
+            <div class="tab-pane" id="tab-voice">
+                <div class="pane-header">
+                    <h2>Limited Reading Accessibility &rarr; Voice Explainer (Audio Summary)</h2>
+                    <p>Listen to policies explained in natural regional voice audio with interactive player controls.</p>
+                </div>
+                <div class="card audio-player-card">
+                    <div class="audio-visualizer">
+                        <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+                    </div>
+                    <h3 id="audioTitle">PM Mudra Loan Scheme 2026 - Simple Audio Summary</h3>
+                    <p id="audioSub">Language: English (Regional accent support active)</p>
+                    <div class="player-controls">
+                        <button class="btn-control" id="playAudioBtn"><i class="fa-solid fa-play" id="playIcon"></i> <span id="playLabel">Play Audio</span></button>
+                        <button class="btn-control secondary" id="resetAudioBtn"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" id="audioProgress"></div>
+                    </div>
+                    <div class="transcript-box" id="audioTranscript">
+                        <p><strong>[00:00]</strong> Welcome to PolicySevak audio briefing. Today we explain the updated micro-unit loan criteria...</p>
+                        <p><strong>[00:15]</strong> Small businesses can now avail collateral-free loans up to 10 Lakh rupees under Shishu, Kishore, and Tarun tiers...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 7: STEP-BY-STEP GUIDANCE -->
+            <div class="tab-pane" id="tab-guidance">
+                <div class="pane-header">
+                    <h2>Confusing Application Procedures &rarr; Step-by-Step Guidance</h2>
+                    <p>Follow a clear, interactive roadmap to apply for government benefits without filing errors.</p>
+                </div>
+                <div class="card">
+                    <div class="steps-timeline">
+                        <div class="step-item completed">
+                            <div class="step-marker">1</div>
+                            <div class="step-content">
+                                <h4>Document Preparation</h4>
+                                <p>Keep Aadhaar Card, PAN, Business Registration/GSTIN, and Income Certificate ready.</p>
+                            </div>
+                        </div>
+                        <div class="step-item active">
+                            <div class="step-marker">2</div>
+                            <div class="step-content">
+                                <h4>Portal Registration & Application Submission</h4>
+                                <p>Log into the official national scheme portal, fill out applicant details, and upload verified documents.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-marker">3</div>
+                            <div class="step-content">
+                                <h4>Verification & Bank Disbursement</h4>
+                                <p>Municipal authority or bank branch verifies credentials within 7 working days for direct benefit transfer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 8: SOURCE VERIFICATION -->
+            <div class="tab-pane" id="tab-verification">
+                <div class="pane-header">
+                    <h2>Outdated Information &rarr; Source Verification and Updates</h2>
+                    <p>Verify official Gazette numbers, authenticity checksums, and last-updated timestamps.</p>
+                </div>
+                <div class="card">
+                    <div class="verification-box">
+                        <div class="verify-badge secure"><i class="fa-solid fa-shield-check"></i> Official Government Gazette Verified</div>
+                        <ul class="meta-list">
+                            <li><strong>Document ID:</strong> GAZ-2026-MUNI-8841</li>
+                            <li><strong>Issuing Authority:</strong> Ministry of Housing & Urban Affairs</li>
+                            <li><strong>Publication Date:</strong> October 24, 2026</li>
+                            <li><strong>Checksum Hash:</strong> <code>sha256:8f4c9b2a1e7d3f...</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 9: AI POLICY CHATBOT -->
+            <div class="tab-pane" id="tab-chatbot">
+                <div class="pane-header">
+                    <h2>Difficulty Getting Answers &rarr; AI Policy Chatbot</h2>
+                    <p>Ask any question about government schemes, eligibility, or application processes in your natural language.</p>
+                </div>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">
+                            <div class="msg-icon"><i class="fa-solid fa-robot"></i></div>
+                            <div class="msg-content">Hello! I am your PolicySevak AI Assistant. Ask me anything about welfare policies, eligibility criteria, or municipal rights!</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type your question here (e.g. 'Am I eligible for Mudra loan with 3 Lakh income?')...">
+                        <button class="btn-action" id="sendChatBtn"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 10: POLICY CHANGE TRACKER -->
+            <div class="tab-pane" id="tab-tracker">
+                <div class="pane-header">
+                    <h2>Unawareness of Policy Changes &rarr; Policy Change Tracker</h2>
+                    <p>Stay updated with real-time amendment alerts and circular modifications affecting citizens and businesses.</p>
+                </div>
+                <div class="card" id="trackerContainer">
+                    <!-- Populated via JS -->
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Upload Modal -->
+    <div class="modal" id="uploadModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3><i class="fa-solid fa-cloud-arrow-up"></i> Ingest New Policy Document</h3>
+            <p>Upload PDF notifications, municipal bylaws, or paste URL for instant AI indexing.</p>
+            <input type="file" id="policyFile" class="file-input">
+            <input type="text" placeholder="Or paste policy notification title/URL..." class="url-input">
+            <button class="btn-action full-width" id="processIngestionBtn">Process & Analyze Policy</button>
+        </div>
+    </div>
+
+    <!-- JavaScript File Link -->
+    <script src="app.js"></script>
+</body>
+</html>
